@@ -1,8 +1,8 @@
-ASM=nasm
-XX=g++
+ASM := nasm
+XX := g++
 
-SRC_DIR=src
-BUILD_DIR=build
+SRC_DIR := src
+BUILD_DIR := build
 
 
 .PHONY: all floppy_image kernel bootloader fat clean always
@@ -31,10 +31,8 @@ $(BUILD_DIR)/bootloader.bin: always
 
 # kernel
 
-kernel: $(BUILD_DIR)/kernel.bin
-
-$(BUILD_DIR)/kernel.bin: always
-	$(ASM) $(SRC_DIR)/kernel/main.asm -f bin -o $(BUILD_DIR)/kernel.bin
+kernel: always
+	$(MAKE) -C $(SRC_DIR)/kernel
 
 
 # fat
